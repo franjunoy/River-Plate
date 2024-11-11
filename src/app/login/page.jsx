@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useState } from 'react';
 
 export default function Login() {
@@ -31,16 +32,18 @@ export default function Login() {
   };
 
   return (
-    <div className='flex flex-col items-center justify-center min-h-screen p-4 bg-gray-100'>
-      <div className='w-full max-w-xs'>
-        <h1 className='text-2xl font-bold mb-4 text-center'>Login</h1>
-        <form
-          onSubmit={handleSubmit}
-          className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'
-        >
+    <div
+      className='flex items-center justify-center min-h-screen p-4'
+      style={{ backgroundColor: '#DA291C' }}
+    >
+      <div className='w-full max-w-sm bg-white rounded-lg shadow-lg p-8'>
+        <h1 className='text-2xl font-bold mb-6 text-center text-gray-800'>
+          Login
+        </h1>
+        <form onSubmit={handleSubmit}>
           <div className='mb-4'>
             <label
-              className='block text-gray-700 text-sm font-bold mb-2'
+              className='block text-gray-700 text-sm font-semibold mb-2'
               htmlFor='email'
             >
               Email
@@ -51,12 +54,12 @@ export default function Login() {
               placeholder='Ingresa tu email'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+              className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-red-500'
             />
           </div>
           <div className='mb-6'>
             <label
-              className='block text-gray-700 text-sm font-bold mb-2'
+              className='block text-gray-700 text-sm font-semibold mb-2'
               htmlFor='password'
             >
               Contraseña
@@ -67,18 +70,18 @@ export default function Login() {
               placeholder='Ingresa tu contraseña'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline'
+              className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-red-500'
             />
           </div>
 
-          {error && <p className='text-red-500 text-xs italic mb-4'>{error}</p>}
+          {error && <p className='text-red-500 text-sm mb-4'>{error}</p>}
 
-          <button
-            type='submit'
-            className='w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+          <Link
+            href='/'
+            className=' flex items-center justify-center w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600'
           >
-            Iniciar sesión
-          </button>
+            <span>Iniciar sesión</span>
+          </Link>
         </form>
       </div>
     </div>
