@@ -8,29 +8,41 @@ import Link from 'next/link';
 export default function RootLayout({ children }) {
   const pathname = usePathname();
   const isLoginPage = pathname === '/login';
+
   return (
     <html lang='en'>
-      <body className='flex h-screen'>
+      <body
+        className={`h-screen ${
+          isLoginPage ? 'flex justify-center items-center bg-gray-100' : 'flex'
+        }`}
+      >
         {isLoginPage ? (
-          <div>
+          <div className='w-full h-full'>
             <Login />
           </div>
         ) : (
           <>
-            <aside className='w-64 bg-black text-white flex flex-col p-4'>
-              <div className='flex items-center justify-center mb-8'>
+            <aside
+              className='w-64 text-white flex flex-col p-4'
+              style={{ backgroundColor: '#DA291C' }}
+            >
+              <div className='flex items-center justify-center mb-8 gap-4 w-full max-w-xs'>
                 <Link
                   href='/login'
-                  className='flex items-center gap-3 p-2 rounded-md bg-gray-800 text-white hover:bg-gray-700 transition-colors'
+                  className='flex items-center border-white border-2 rounded py-1 px-1'
                 >
-                  <span>Iniciar sesión</span>
+                  <span className=' font-semibold text-center text-black'>
+                    Iniciar sesión
+                  </span>
                 </Link>
 
                 <Link
                   href='/register'
-                  className='flex items-center gap-3 p-2 rounded-md bg-gray-800 text-white hover:bg-gray-700 transition-colors'
+                  className='flex items-center border-white border-2 rounded py-1 px-1'
                 >
-                  <span>Registrarse</span>
+                  <span className=' font-semibold text-center text-black'>
+                    Registrarse
+                  </span>
                 </Link>
               </div>
               <nav className='flex flex-col gap-4'>
